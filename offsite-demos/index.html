@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CARTO DASHBOARD EXAMPLE</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="../Category/carto-category.css" />
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script src="./dist/bundle.js"></script>
+    <header id="summary">WRITE WORDS</header>
+    <textarea id="text" name="text" rows=20></textarea>
+    <carto-category title="List" subtitle="A cool list"></carto-category>
+    <script>
+      const state = {
+        items: []
+      };
+      const categoryEl = document.querySelector('carto-category');
+      const header = document.getElementById('summary');
+      const textarea = document.getElementById('text');
+      categoryEl.addEventListener('changed', e => {
+        textarea.value = e.detail.data.filter(e => e.selected).map(e => e.name).join('\n');
+      });
+      textarea.addEventListener('input', (event) => {
+        const wholeText = event.target.value;
+        const lines = wholeText.split('\n');
+        header.textContent = `${lines.length} lines`;
+        const values = {};
+        lines.forEach(e =>
+          values[e] = (values[e]+1 || 1)
+        );
+        categoryEl.setData(Object.keys(values).map(e => ({
+          name: e,
+          value: values[e]
+        })));
+      });
+    </script>
+</body>
+
+</html>

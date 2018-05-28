@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carto Formula widget</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+    <link rel="stylesheet" href="carto-category.css">
+    <script src="carto-category.js"></script>
+    <style>
+        body {
+            background: #DDD;
+        }
+    </style>
+</head>
+
+<body>
+  <carto-category title="Title" subtitle="All selected"></carto-category>
+  <script>
+    document.querySelector('carto-category').setData([
+      { name: 'Hola', value: 50 },
+      { name: 'Hola2', value: 100 },
+      { name: 'Hola3', value: 120 },
+      { name: 'Hola4', value: 140 },
+      { name: 'Hola5', value: 30 },
+    ]);
+
+    document.querySelector('carto-category').addEventListener('changed', e => console.warn(e.detail));
+  </script>
+</body>
+
+</html>
