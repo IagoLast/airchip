@@ -1,0 +1,2 @@
+require('@airship/category-widget');
+
