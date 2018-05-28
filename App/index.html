@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CARTO DASHBOARD EXAMPLE</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="../FormulaWidget/carto-formula.css" />
+    <link rel="stylesheet" href="../Donut/carto-donut.css" />
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <style>
+        #map {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        aside {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            overflow: scroll;
+            z-index: 999;
+        }
+
+        carto-formula,
+        carto-donut {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <aside>
+        <carto-donut title="Population" subtitle="Only visible"></carto-donut>
+        <carto-formula title="Total Population" subtitle="POP_MAX" value="" footer="Aggregated max population"></carto-formula>
+        <carto-formula title="Total Population" subtitle="POP_MAX" value="" footer="Aggregated max population"></carto-formula>
+    </aside>
+    <script src="./dist/bundle.js"></script>
+</body>
+
+</html>

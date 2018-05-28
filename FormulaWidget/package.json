@@ -1,0 +1,18 @@
+{
+  "name": "@airship/formula-widget",
+  "version": "1.0.0",
+  "description": "CARTO formula widget",
+  "main": "carto-formula.js",
+  "author": "CARTO",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-builtin-classes": "^0.6.1",
+    "babel-plugin-transform-custom-element-classes": "^0.1.0",
+    "babel-plugin-transform-es2015-classes": "^6.24.1",
+    "babel-preset-env": "^1.7.0"
+  },
+  "scripts": {
+    "build": "babel carto-formula.js -d dist"
+  }
+}

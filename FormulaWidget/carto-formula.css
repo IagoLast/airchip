@@ -1,0 +1,31 @@
+carto-formula {
+    display: inline-block;
+    background: white;
+    padding: 15px;
+    min-width: 200px;
+    font-family: 'Roboto';
+    font-weight: 300;
+}
+
+carto-formula span {
+    display: block;
+}
+
+carto-formula .subtitle {
+    font-size: 13px;
+}
+
+carto-formula .subtitle {
+    color: #888;
+    font-size: 13px;
+}
+
+carto-formula .value {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 36px;
+}
+
+carto-formula .footer {
+    font-size: 13px;
+}

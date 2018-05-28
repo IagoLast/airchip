@@ -1,0 +1,12 @@
+{
+    "name": "@carto/airforce-button",
+    "description": "CARTO web components library",
+    "version": "0.0.0",
+    "license": "Apache 2.0",
+    "keywords": [
+        "components",
+        "design",
+        "button"
+    ],
+    "dependencies": {}
+}

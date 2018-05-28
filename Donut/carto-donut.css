@@ -1,0 +1,27 @@
+carto-donut {
+    display: inline-block;
+    background: white;
+    padding: 15px;
+    width: 280px;
+    height: 200px;
+    font-family: 'Roboto';
+    font-weight: 300;
+}
+
+carto-donut span {
+    display: block;
+}
+
+carto-donut .subtitle {
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+carto-donut .subtitle {
+    color: #888;
+    font-size: 13px;
+}
+
+carto-donut .chart-container {
+    margin-top: 15px;
+}
