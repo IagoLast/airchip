@@ -20,12 +20,7 @@ class CartoDonut extends HTMLElement {
         console.info('constructor', this);
         this.state = Object.freeze({});
 
-        this.mutableElement = document.createElement('div');
-        this.appendChild(this.mutableElement);
-
-        this.inmutableElement = document.createElement('div');
-        this.appendChild(this.inmutableElement);
-
+        this._render = hyperHTML.bind(this);
     }
 
     get _mutableContent() {
@@ -53,7 +48,12 @@ class CartoDonut extends HTMLElement {
     }
 
     render() {
-        this.mutableElement.innerHTML = this._mutableContent;
+        this._render `
+        <span class="title">${this.state.title || ''}</span>
+        <span class="subtitle">${this.state.subtitle || ''}</span>
+        <div class="chart-container"></div>
+        `;
+
         this._drawChart();
     }
 
@@ -71,7 +71,7 @@ class CartoDonut extends HTMLElement {
         this._radius = Math.min(this._width, this._height) / 2;
 
 
-        this._svg = d3.select(this.inmutableElement)
+        this._svg = d3.select(this.querySelector('.chart-container'))
             .append('svg')
             .attr('class', 'pie')
             .attr('width', this._width)
