@@ -5,35 +5,32 @@ class CartoCategoryItem extends HTMLElement {
 
     constructor() {
         super();
-        // console.info('constructor', this);
         this.state = Object.freeze({});
         this._render = hyperHTML.bind(this);
     }
 
     render() {
-        console.log('re-rendering');
-        const className = `carto-category-bar ${this.state.selected === 'true' ? 'carto-category-bar--selected' : ''}`;
+        const className = `CategoryItem--progress ${this.state.selected === 'true' ? 'active' : ''}`;
+
         this._render`
-            <span>${this.state.name || ''}</span>
-            <span>${this.state.value || ''}</span>
-            <div class=${className} style="${{width: `${this.state.percent}%`}}"></div>
+            <p class="CategoryItem--name">${this.state.name || ''}</p>
+            <span class="CategoryItem--value">${this.state.value || ''}</span>
+            <div class="CategoryItem--progressBar">
+                <span class=${className} style="${{ width: `${this.state.percent}%` }}"></span>
+            </div>
         `;
     }
 
     connectedCallback() {
-        // console.info('connectedCallback', this);
         this.render();
     }
 
     attributeChangedCallback(attributeName, oldValue, newValue, namespace) {
-        // console.info('attributeChangedCallback', this);
-        const newState = Object.assign({}, this.state);
-        newState[attributeName] = newValue;
-        this.setState(newState);
+        this.setState({ [attributeName]: newValue });
     }
 
     setState(state) {
-        this.state = state;
+        this.state = { ...this.state, ...state};
         this.render();
     }
 

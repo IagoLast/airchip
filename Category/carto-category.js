@@ -5,7 +5,6 @@ class CartoCategory extends HTMLElement {
 
   constructor() {
     super();
-    // console.info('constructor', this);
     this.state = Object.freeze({
       selected: [],
     });
@@ -19,12 +18,10 @@ class CartoCategory extends HTMLElement {
   }
 
   connectedCallback() {
-    // console.info('connectedCallback', this);
     this.render();
   }
 
   attributeChangedCallback(attributeName, oldValue, newValue, namespace) {
-    // console.info('attributeChangedCallback', this);
     const newState = Object.assign({}, this.state);
     newState[attributeName] = newValue;
     this.setState(newState);
@@ -37,9 +34,7 @@ class CartoCategory extends HTMLElement {
     this.dispatchEvent(event);
   }
 
-  childClicked(e) {
-    // this.setAttribute('selected', (this.state.selected === 'true') ? 'false' : 'true');
-
+  childClicked(event) {
     const newSelected = this.parentElement.state.selected.includes(this.state.name)
       ? this.parentElement.state.selected.filter(name => name !== this.state.name)
       : [...this.parentElement.state.selected, this.state.name]
@@ -48,6 +43,18 @@ class CartoCategory extends HTMLElement {
       ...this.parentElement.state,
       selected: newSelected,
     });
+  }
+
+  _renderItem(item) {
+    return hyperHTML.wire()`
+      <carto-category-item
+        value=${item.value}
+        name=${item.name}
+        selected=${item.selected}
+        percent=${item.percent}
+        onclick=${this.childClicked}
+      ></carto-category-item>
+    `;
   }
 
   render() {
@@ -63,14 +70,14 @@ class CartoCategory extends HTMLElement {
       .map(item => ({
         name: item.name,
         value: item.value,
-        selected: this.state.selected.includes(item.name),
+        selected: this.state.selected.length === 0 || this.state.selected.includes(item.name),
         percent: (item.value / max) * 100
       }));
 
     return this._render`
-        <div class="carto-title">${this.state.title}</div>
-        <div class="carto-subtitle">${this.state.subtitle}</div>
-        ${items.map(item => hyperHTML.wire() `<carto-category-item value=${item.value} name=${item.name} selected=${item.selected} percent=${item.percent} onclick=${this.childClicked}></carto-category-item>`)}
+        <div class="CA-Title">${this.state.title}</div>
+        <div class="CA-Subtitle">${this.state.subtitle}</div>
+        ${items.map(item => this._renderItem(item))}
       `;
   }
 }
