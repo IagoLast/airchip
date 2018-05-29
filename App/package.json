@@ -13,6 +13,7 @@
     "@carto/ravel": "file:../ravel",
     "@airship/formula-widget": "file:../FormulaWidget",
     "@airship/donut-widget": "file:../Donut",
+    "@airship/category-multiple-widget": "file:../CategoryMultiple",
     "@airship/category-widget": "file:../Category",
     "@airship/category-widget-item": "file:../Category/CategoryItem",
     "leaflet": "^1.3.1",

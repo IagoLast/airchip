@@ -1,0 +1,8 @@
+{
+  "name": "@airship/category-multiple-widget",
+  "version": "1.0.0",
+  "description": "CARTO category widget",
+  "main": "carto-category-multiple.js",
+  "author": "CARTO",
+  "license": "MIT"
+}

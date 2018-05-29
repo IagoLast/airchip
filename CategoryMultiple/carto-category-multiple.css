@@ -1,0 +1,108 @@
+carto-category-multiple {
+    padding: 16px;
+    background: white;
+    width: 280px;
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    border-bottom: 1px solid #ccc;
+}
+
+/* -- Category Item */
+
+carto-category-item {
+    display: flex;
+    flex-wrap: wrap;
+    cursor: default;
+    margin-bottom: 8px;
+}
+
+carto-category-item .CategoryItem--name {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+    overflow: hidden;
+    margin: 0px;
+    line-height: 20px;
+    font-weight: 400;
+    font-size: 12px;
+    font-family: Roboto, sans-serif;
+    flex: 1 1 70%;
+    color: rgb(44, 44, 44);
+    -webkit-font-smoothing: antialiased;
+}
+
+carto-category-item .CategoryItem--value {
+    text-align: right;
+    margin: 0px;
+    line-height: 20px;
+    font-weight: 400;
+    font-size: 12px;
+    font-family: Roboto, sans-serif;
+    flex: 1 1 30%;
+    color: rgb(44, 44, 44);
+    -webkit-font-smoothing: antialiased;
+}
+
+carto-category-item .CategoryItem--progressBar {
+    width: 100%;
+    position: relative;
+    height: 4px;
+    border-radius: 2px;
+    background: rgb(245, 245, 245);
+}
+
+carto-category-item .CategoryItem--progress {
+    width: 100%;
+    transition: background 0.2s ease;
+    position: absolute;
+    max-width: 100%;
+    left: 0px;
+    height: 4px;
+    content: "";
+    border-radius: 2px;
+    background-color: transparent;
+}
+
+carto-category-item .CategoryItem--progress.active {
+    background-color: #47db99;
+}
+
+.CA-Title {
+    margin: 0px;
+    line-height: 24px;
+    font-weight: 400;
+    font-size: 16px;
+    font-family: Roboto, sans-serif;
+    color: rgb(44, 44, 44);
+    -webkit-font-smoothing: antialiased;
+}
+
+.CA-Subtitle {
+    margin: 0px 0px 12px;
+    line-height: 16px;
+    font-weight: 400;
+    font-size: 12px;
+    font-family: Roboto, sans-serif;
+    color: rgb(116, 116, 116);
+    -webkit-font-smoothing: antialiased;
+}
+
+carto-category-multiple>.btn-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+carto-category-multiple>.btn-area>.btn-clear {
+    align-items: center;
+    color: #1785FB;
+    background: none;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    font: 500 12px/20px 'Roboto';
+    margin: 0;
+    padding: 12px 0;
+    transition: all 0.2s ease;
+    vertical-align: top;
+}

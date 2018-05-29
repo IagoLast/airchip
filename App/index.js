@@ -4,6 +4,9 @@ require('@airship/formula-widget');
 require('@airship/donut-widget');
 require('@airship/category-widget');
 require('@airship/category-widget-item');
+require('@airship/category-multiple-widget');
+
+
 const ravel = require('@carto/ravel');
 
 const widgetElement0 = document.querySelector('#widget-0');

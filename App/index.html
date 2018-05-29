@@ -9,12 +9,14 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
     <link rel="stylesheet" href="../Category/carto-category.css" />
+    <link rel="stylesheet" href="../CategoryMultiple/carto-category-multiple.css" />
+
     <link rel="stylesheet" href="../Button//carto-button.css">
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="../CartoElement/index.js"></script>
     <script src="https://unpkg.com/hyperhtml@2.10.2/min.js"></script>
     <style>
-        body{
+        body {
             margin: 0;
             position: relative;
         }
@@ -34,7 +36,8 @@
             flex-direction: column;
         }
 
-        carto-category {
+        carto-category,
+        carto-category-multiple {
             display: inline-block;
         }
     </style>
@@ -43,8 +46,8 @@
 <body>
     <div id="map"></div>
     <aside>
-        <carto-category id="widget-0" title="widget-0" subtitle="asdasd" ignore="Other"></carto-category>
-        <carto-category id="widget-1" title="widget-1" subtitle="asdasd"></carto-category>
+        <carto-category-multiple id="widget-0" title="widget-0" subtitle="Cities per country" ignore="Other"></carto-category-multiple>
+        <carto-category id="widget-1" title="widget-1" subtitle="City names"></carto-category>
     </aside>
     <script src="./dist/bundle.js"></script>
 </body>

@@ -2,6 +2,9 @@
 # yarn lockfile v1
 
 
+"@airship/category-multiple-widget@file:../CategoryMultiple":
+  version "1.0.0"
+
 "@airship/category-widget-item@file:../Category/CategoryItem":
   version "1.0.0"
   dependencies:

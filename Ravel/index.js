@@ -38,5 +38,5 @@ function buildQuery(filters) {
     }
 
     let query = `${originalQuery} WHERE `;
-    return `${query} ${filters.values().join(' AND ')}`;
+    return `${query} ${Array.from(filters.values()).join(' AND ')}`;
 }
