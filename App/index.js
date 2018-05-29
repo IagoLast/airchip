@@ -24,28 +24,20 @@ const layer = new carto.layer.Layer(source, style);
 
 
 // Widget 1
-const categoryDataView = new carto.dataview.Category(source, 'adm0name', {
+const categoryDataview1 = ravel.bind(carto, map, widgetElement0, source, 'adm0name', {
     limit: 10,
     operation: carto.operation.COUNT,
     operationColumn: 'cartodb_id'
 });
-categoryDataView.on('dataChanged', data => widgetElement0.setData(data.categories));
-categoryDataView.addFilter(new carto.filter.BoundingBoxLeaflet(map));
-client.addDataview(categoryDataView);
+client.addDataview(categoryDataview1);
 
 // Widget 2
-const categoryDataView2 = new carto.dataview.Category(source, 'name', {
+const categoryDataview2 = ravel.bind(carto, map, widgetElement1, source, 'name', {
     limit: 10,
     operation: carto.operation.COUNT,
     operationColumn: 'adm0name'
 });
-
-
-ravel.bind(categoryDataView, widgetElement0, 'adm0name');
-ravel.bind(categoryDataView2, widgetElement1, 'name');
-
-categoryDataView2.addFilter(new carto.filter.BoundingBoxLeaflet(map));
-client.addDataview(categoryDataView2);
+client.addDataview(categoryDataview2);
 
 
 client.addLayer(layer);
