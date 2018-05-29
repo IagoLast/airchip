@@ -4,6 +4,7 @@ require('@airship/formula-widget');
 require('@airship/donut-widget');
 require('@airship/category-widget');
 require('@airship/category-widget-item');
+const ravel = require('@carto/ravel');
 
 const widgetElement0 = document.querySelector('#widget-0');
 const widgetElement1 = document.querySelector('#widget-1');
@@ -38,28 +39,17 @@ const categoryDataView2 = new carto.dataview.Category(source, 'name', {
     operation: carto.operation.COUNT,
     operationColumn: 'adm0name'
 });
-categoryDataView2.on('dataChanged', data => {
-    console.warn(data);
-    widgetElement1.setData(data.categories)
-});
+
+
+ravel.bind(categoryDataView, widgetElement0, 'adm0name');
+ravel.bind(categoryDataView2, widgetElement1, 'name');
+
 categoryDataView2.addFilter(new carto.filter.BoundingBoxLeaflet(map));
 client.addDataview(categoryDataView2);
 
 
 client.addLayer(layer);
 client.getLeafletLayer().addTo(map);
-
-widgetElement0.addEventListener('changed', function (event) {
-    const selectedCountries = event.detail.selected.map(name => `'${name}'`).join(',');
-    source.setQuery(`${originalQuery} WHERE adm0name IN (${selectedCountries})`);
-})
-
-
-widgetElement1.addEventListener('changed', function (event) {
-    const selectedCities = event.detail.selected.map(name => `'${name}'`).join(',');
-    source.setQuery(`${originalQuery} WHERE name IN (${selectedCities})`);
-});
-
 
 document.querySelector('button').addEventListener('click', () => {
     source.setQuery(originalQuery);

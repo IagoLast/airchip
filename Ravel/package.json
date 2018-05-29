@@ -1,0 +1,9 @@
+{
+    "name": "@carto/ravel",
+    "version": "1.0.0",
+    "description": "Airship integration",
+    "main": "index.js",
+    "author": "CARTO",
+    "license": "MIT"
+  }
+  
