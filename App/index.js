@@ -5,7 +5,9 @@ require('@airship/donut-widget');
 require('@airship/category-widget');
 require('@airship/category-widget-item');
 
-const widgetElement = document.querySelector('carto-category');
+const widgetElement0 = document.querySelector('#widget-0');
+const widgetElement1 = document.querySelector('#widget-1');
+
 
 
 // Prepare leaflet layer
@@ -20,27 +22,45 @@ const style = new carto.style.CartoCSS(`#layer {marker-fill: red}`);
 const layer = new carto.layer.Layer(source, style);
 
 
-// Formula
+// Widget 1
 const categoryDataView = new carto.dataview.Category(source, 'adm0name', {
     limit: 10,
     operation: carto.operation.COUNT,
     operationColumn: 'cartodb_id'
 });
-categoryDataView.on('dataChanged', _updateWidgets);
+categoryDataView.on('dataChanged', data => widgetElement0.setData(data.categories));
 categoryDataView.addFilter(new carto.filter.BoundingBoxLeaflet(map));
-/**
- * Update formula widgets
- */
-function _updateWidgets(data) {
-    widgetElement.setData(data.categories);
-}
-
-// Add dataviews and layer
 client.addDataview(categoryDataView);
+
+// Widget 2
+const categoryDataView2 = new carto.dataview.Category(source, 'name', {
+    limit: 10,
+    operation: carto.operation.COUNT,
+    operationColumn: 'adm0name'
+});
+categoryDataView2.on('dataChanged', data => {
+    console.warn(data);
+    widgetElement1.setData(data.categories)
+});
+categoryDataView2.addFilter(new carto.filter.BoundingBoxLeaflet(map));
+client.addDataview(categoryDataView2);
+
+
 client.addLayer(layer);
 client.getLeafletLayer().addTo(map);
 
-widgetElement.addEventListener('changed', function (event) {
+widgetElement0.addEventListener('changed', function (event) {
     const selectedCountries = event.detail.selected.map(name => `'${name}'`).join(',');
     source.setQuery(`${originalQuery} WHERE adm0name IN (${selectedCountries})`);
+})
+
+
+widgetElement1.addEventListener('changed', function (event) {
+    const selectedCities = event.detail.selected.map(name => `'${name}'`).join(',');
+    source.setQuery(`${originalQuery} WHERE name IN (${selectedCities})`);
+});
+
+
+document.querySelector('button').addEventListener('click', () => {
+    source.setQuery(originalQuery);
 })

@@ -6,12 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CARTO DASHBOARD EXAMPLE</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
     <link rel="stylesheet" href="../Category/carto-category.css" />
+    <link rel="stylesheet" href="../Button//carto-button.css">
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://unpkg.com/hyperhtml@2.10.2/min.js"></script>
     <style>
+        body{
+            margin: 0;
+            position: relative;
+        }
+
         #map {
             position: relative;
             width: 100vw;
@@ -27,6 +33,7 @@
 
         carto-category {
             position: relative;
+            display: inline-block;
         }
     </style>
 </head>
@@ -34,8 +41,9 @@
 <body>
     <div id="map"></div>
     <aside>
-        <carto-category title="Test" subtitle="asdasd"></carto-category>
-        <button>Clear filter</button>
+        <carto-category id="widget-0" title="widget-0" subtitle="asdasd"></carto-category>
+        <carto-category id="widget-1" title="widget-1" subtitle="asdasd"></carto-category>
+        <button class="carto-button large">Clear filter</button>
     </aside>
     <script src="./dist/bundle.js"></script>
 </body>
