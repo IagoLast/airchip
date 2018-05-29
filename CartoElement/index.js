@@ -14,8 +14,10 @@ class CartoElement extends HTMLElement {
   }
 
   setState(state) {
-    this.state = { ...this.state, ...state };
+    this.state = Object.freeze({ ...this.state, ...state });
+
     this.render();
+
     const event = new CustomEvent('changed', { detail: this.state });
     this.dispatchEvent(event);
   }
