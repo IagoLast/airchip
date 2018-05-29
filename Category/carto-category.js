@@ -12,9 +12,7 @@ class CartoCategory extends CartoElement {
   }
 
   setData(newValue) {
-    console.log(newValue);
-    this.state.data = [].concat(newValue);
-    this.render();
+    this.setState({ data: newValue });
   }
 
   _renderItem(item) {
