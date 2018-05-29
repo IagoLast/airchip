@@ -5,8 +5,10 @@ class CartoCategory extends HTMLElement {
 
   constructor() {
     super();
-    console.info('constructor', this);
-    this.state = Object.freeze({});
+    // console.info('constructor', this);
+    this.state = Object.freeze({
+      selected: [],
+    });
     this._render = hyperHTML.bind(this);
   }
 
@@ -17,12 +19,12 @@ class CartoCategory extends HTMLElement {
   }
 
   connectedCallback() {
-    console.info('connectedCallback', this);
+    // console.info('connectedCallback', this);
     this.render();
   }
 
   attributeChangedCallback(attributeName, oldValue, newValue, namespace) {
-    console.info('attributeChangedCallback', this);
+    // console.info('attributeChangedCallback', this);
     const newState = Object.assign({}, this.state);
     newState[attributeName] = newValue;
     this.setState(newState);
@@ -36,7 +38,16 @@ class CartoCategory extends HTMLElement {
   }
 
   childClicked(e) {
-    this.setAttribute('selected', (this.state.selected === 'true') ? 'false' : 'true');
+    // this.setAttribute('selected', (this.state.selected === 'true') ? 'false' : 'true');
+
+    const newSelected = this.parentElement.state.selected.includes(this.state.name)
+      ? this.parentElement.state.selected.filter(name => name !== this.state.name)
+      : [...this.parentElement.state.selected, this.state.name]
+
+    this.parentElement.setState({
+      ...this.parentElement.state,
+      selected: newSelected,
+    });
   }
 
   render() {
@@ -52,30 +63,15 @@ class CartoCategory extends HTMLElement {
       .map(item => ({
         name: item.name,
         value: item.value,
-        selected: item.selected || false,
+        selected: this.state.selected.includes(item.name),
         percent: (item.value / max) * 100
       }));
 
     return this._render`
         <div class="carto-title">${this.state.title}</div>
         <div class="carto-subtitle">${this.state.subtitle}</div>
-        ${items.map(item => hyperHTML.wire()`<carto-category-item value=${item.value} name=${item.name} selected=${item.selected} percent=${item.percent} onclick=${this.childClicked}></carto-category-item>`)}
+        ${items.map(item => hyperHTML.wire() `<carto-category-item value=${item.value} name=${item.name} selected=${item.selected} percent=${item.percent} onclick=${this.childClicked}></carto-category-item>`)}
       `;
-  }
-
-  _listenToChildEvents() {
-    this.querySelectorAll('.carto-category-item').forEach(element => {
-      element.addEventListener('click', () => {
-        const newState = Object.assign({}, this.state);
-        newState.data = newState.data.filter(e => e.name !== element.attributes.name.value);
-        newState.data.push({
-          name: element.attributes.name.value,
-          value: element.attributes.value.value,
-          selected: !(element.attributes.selected.value == 'true'),
-        });
-        this.setState(newState);
-      })
-    });
   }
 }
 

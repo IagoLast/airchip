@@ -1,7 +1,16 @@
+carto-category {
+  padding: 16px;
+  background: white;
+  width: 280px;
+  display: block;
+}
+
 carto-category-item,
 .carto-title,
 .carto-subtitle {
   padding: 5px;
+  display: block;
+  cursor: pointer;
 }
 
 .carto-category-bar {

@@ -2,6 +2,24 @@
 # yarn lockfile v1
 
 
+"@airship/category-widget-item@file:../Category/CategoryItem":
+  version "1.0.0"
+  dependencies:
+    babel-cli "^6.26.0"
+    babel-plugin-transform-builtin-classes "^0.6.1"
+    babel-plugin-transform-custom-element-classes "^0.1.0"
+    babel-plugin-transform-es2015-classes "^6.24.1"
+    babel-preset-env "^1.7.0"
+
+"@airship/category-widget@file:../Category":
+  version "1.0.0"
+  dependencies:
+    babel-cli "^6.26.0"
+    babel-plugin-transform-builtin-classes "^0.6.1"
+    babel-plugin-transform-custom-element-classes "^0.1.0"
+    babel-plugin-transform-es2015-classes "^6.24.1"
+    babel-preset-env "^1.7.0"
+
 "@airship/donut-widget@file:../Donut":
   version "1.0.0"
   dependencies:

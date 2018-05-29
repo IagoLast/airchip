@@ -5,7 +5,7 @@ class CartoCategoryItem extends HTMLElement {
 
     constructor() {
         super();
-        console.info('constructor', this);
+        // console.info('constructor', this);
         this.state = Object.freeze({});
         this._render = hyperHTML.bind(this);
     }
@@ -21,12 +21,12 @@ class CartoCategoryItem extends HTMLElement {
     }
 
     connectedCallback() {
-        console.info('connectedCallback', this);
+        // console.info('connectedCallback', this);
         this.render();
     }
 
     attributeChangedCallback(attributeName, oldValue, newValue, namespace) {
-        console.info('attributeChangedCallback', this);
+        // console.info('attributeChangedCallback', this);
         const newState = Object.assign({}, this.state);
         newState[attributeName] = newValue;
         this.setState(newState);
