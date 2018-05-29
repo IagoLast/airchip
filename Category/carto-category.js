@@ -51,11 +51,9 @@ class CartoCategory extends HTMLElement {
     }));
 
     return this._render`
-        <div class="carto-category">
-          <div class="carto-title">${this.state.title}</div>
-          <div class="carto-subtitle">${this.state.subtitle}</div>
-          ${items.map(item => `<carto-category-item value=${item.value} name=${item.name} selected=${item.selected} percent=${item.percent}></carto-category-item>`)}
-        </div>
+        <div class="carto-title">${this.state.title}</div>
+        <div class="carto-subtitle">${this.state.subtitle}</div>
+        ${items.map(item => `<carto-category-item "value=${item.value} name=${item.name} selected=${item.selected} percent=${item.percent}></carto-category-item>`)}
       `;
   }
 
