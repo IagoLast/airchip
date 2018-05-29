@@ -1,6 +1,6 @@
 class CartoCategory extends CartoElement {
   static get observedAttributes() {
-    return ['title', 'subtitle', 'data'];
+    return ['title', 'subtitle', 'data', 'ignore'];
   }
 
   constructor() {
@@ -44,13 +44,14 @@ class CartoCategory extends CartoElement {
         value: item.value,
         selected: this.state.selected.length === 0 || this.state.selected.includes(item.name),
         percent: (item.value / max) * 100
-      }));
+      }))
+      .filter(item => this.state.ignore !== item.name);
 
     return this._render`
         <div class="CA-Title">${this.state.title}</div>
         <div class="CA-Subtitle">${this.state.subtitle}</div>
         ${items.map(item => this._renderItem(item))}
-        ${this.state.selected.length ? hyperHTML.wire()`<button onclick=${this.clearFilters.bind(this)} class="btn-clear"> CLEAR </button>` : ''}
+        ${this.state.selected.length ? hyperHTML.wire() `<button onclick=${this.clearFilters.bind(this)} class="btn-clear"> CLEAR </button>` : ''}
       `;
   }
 
