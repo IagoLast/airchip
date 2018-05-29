@@ -36,10 +36,7 @@ class CartoCategory extends HTMLElement {
   }
 
   childClicked(e) {
-    this.setState({
-      ...this.state,
-      selected: (this.state.selected === 'true') ? 'false' : 'true'
-    });
+    this.setAttribute('selected', (this.state.selected === 'true') ? 'false' : 'true');
   }
 
   render() {
