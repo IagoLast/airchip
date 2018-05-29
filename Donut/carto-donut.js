@@ -5,16 +5,6 @@ class CartoDonut extends HTMLElement {
         return ['title', 'subtitle', 'footer', 'data'];
     }
 
-    // get template() {
-    //     return `
-    //     <div class="data-container">
-    //         <span class="title">${this.state.title || ''}</span>
-    //         <span class="subtitle">${this.state.subtitle || ''}</span>
-    //     </div>
-    //     <div class="chart-container"></div>
-    //     `;
-    // }
-
     constructor() {
         super();
         console.info('constructor', this);
@@ -48,12 +38,13 @@ class CartoDonut extends HTMLElement {
     }
 
     render() {
-        this._render `
-        <span class="title">${this.state.title || ''}</span>
-        <span class="subtitle">${this.state.subtitle || ''}</span>
+        this._render`
+        <div class="data-container">
+            <span class="title">${this.state.title || ''}</span>
+            <span class="subtitle">${this.state.subtitle || ''}</span>
+        </div>
         <div class="chart-container"></div>
         `;
-
         this._drawChart();
     }
 

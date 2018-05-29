@@ -3,55 +3,17 @@ class CartoCategory extends HTMLElement {
     return ['title', 'subtitle', 'data'];
   }
 
-  get template() {
-    if (!this.state.data) return 'No categories';
-
-    const max = this.state.data.reduce((max, item) => {
-      if (item.value > max) return item.value;
-      return max;
-    }, 0);
-
-    const selected = this.state.data.reduce((selected, item) => {
-      if (item.selected) return true;
-      return selected;
-    }, false);
-
-    const items = this.state.data
-      .sort((a, b) => b.value - a.value)
-      .map(item => this.itemTemplate(item, max));
-
-    return `
-        <div class="carto-category ${selected ? 'carto-category--selected' : ''}">
-          <div class="carto-title">${this.state.title}</div>
-          <div class="carto-subtitle">${this.state.subtitle}</div>
-          ${items.join('')}
-        </div>
-      `;
-  }
-
   constructor() {
     super();
     console.info('constructor', this);
     this.state = Object.freeze({});
+    this._render = hyperHTML.bind(this);
   }
 
   setData(newValue) {
     console.log(newValue);
     this.state.data = [].concat(newValue);
     this.render();
-  }
-
-  itemTemplate(item, max) {
-    return `
-      <div name="${item.name}" value="${item.value}" selected="${item.selected || false}" data-id="" class="carto-category-item">
-        <div>
-          <span>${item.name}</span>
-          <span>${item.value}</span>
-        </div>
-        <div class="carto-category-bar ${item.selected ? 'carto-category-bar--selected' : ''}" style="width: ${(item.value / max) * 100}%;">
-        </div>
-      </div>
-    `;
   }
 
   connectedCallback() {
@@ -74,8 +36,27 @@ class CartoCategory extends HTMLElement {
   }
 
   render() {
-    this.innerHTML = this.template;
-    this._listenToChildEvents();
+    if (!this.state.data) return 'No categories';
+
+    const max = this.state.data.reduce((max, item) => {
+      if (item.value > max) return item.value;
+      return max;
+    }, 0);
+
+    const items = this.state.data.map(item => ({
+      name: item.name,
+      value: item.value,
+      selected: item.selected || false,
+      percent: (item.value / max) * 100
+    }));
+
+    return this._render`
+        <div class="carto-category">
+          <div class="carto-title">${this.state.title}</div>
+          <div class="carto-subtitle">${this.state.subtitle}</div>
+          ${items.map(item => `<carto-category-item value=${item.value} name=${item.name} selected=${item.selected} percent=${item.percent}></carto-category-item>`)}
+        </div>
+      `;
   }
 
   _listenToChildEvents() {
