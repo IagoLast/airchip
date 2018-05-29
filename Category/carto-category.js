@@ -35,6 +35,13 @@ class CartoCategory extends HTMLElement {
     this.dispatchEvent(event);
   }
 
+  childClicked(e) {
+    this.setState({
+      ...this.state,
+      selected: (this.state.selected === 'true') ? 'false' : 'true'
+    });
+  }
+
   render() {
     if (!this.state.data) return 'No categories';
 
@@ -43,17 +50,19 @@ class CartoCategory extends HTMLElement {
       return max;
     }, 0);
 
-    const items = this.state.data.map(item => ({
-      name: item.name,
-      value: item.value,
-      selected: item.selected || false,
-      percent: (item.value / max) * 100
-    }));
+    const items = this.state.data
+      .sort((a, b) => b.value - a.value)
+      .map(item => ({
+        name: item.name,
+        value: item.value,
+        selected: item.selected || false,
+        percent: (item.value / max) * 100
+      }));
 
     return this._render`
         <div class="carto-title">${this.state.title}</div>
         <div class="carto-subtitle">${this.state.subtitle}</div>
-        ${items.map(item => `<carto-category-item "value=${item.value} name=${item.name} selected=${item.selected} percent=${item.percent}></carto-category-item>`)}
+        ${items.map(item => hyperHTML.wire()`<carto-category-item value=${item.value} name=${item.name} selected=${item.selected} percent=${item.percent} onclick=${this.childClicked}></carto-category-item>`)}
       `;
   }
 

@@ -11,10 +11,12 @@ class CartoCategoryItem extends HTMLElement {
     }
 
     render() {
+        console.log('re-rendering');
+        const className = `carto-category-bar ${this.state.selected === 'true' ? 'carto-category-bar--selected' : ''}`;
         this._render`
             <span>${this.state.name || ''}</span>
             <span>${this.state.value || ''}</span>
-            <div class="carto-category-bar" style="width:100%;"></div>
+            <div class=${className} style="${{width: `${this.state.percent}%`}}"></div>
         `;
     }
 
