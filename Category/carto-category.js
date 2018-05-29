@@ -1,37 +1,20 @@
-class CartoCategory extends HTMLElement {
+class CartoCategory extends CartoElement {
   static get observedAttributes() {
     return ['title', 'subtitle', 'data'];
   }
 
   constructor() {
     super();
+
     this.state = Object.freeze({
       selected: [],
     });
-    this._render = hyperHTML.bind(this);
   }
 
   setData(newValue) {
     console.log(newValue);
     this.state.data = [].concat(newValue);
     this.render();
-  }
-
-  connectedCallback() {
-    this.render();
-  }
-
-  attributeChangedCallback(attributeName, oldValue, newValue, namespace) {
-    const newState = Object.assign({}, this.state);
-    newState[attributeName] = newValue;
-    this.setState(newState);
-  }
-
-  setState(state) {
-    this.state = state;
-    this.render();
-    const event = new CustomEvent('changed', { detail: this.state });
-    this.dispatchEvent(event);
   }
 
   childClicked(event) {

@@ -1,0 +1,8 @@
+{
+  "name": "@airship/carto-element",
+  "version": "1.0.0",
+  "description": "CARTO Core Element",
+  "main": "index.js",
+  "author": "CARTO",
+  "license": "MIT"
+}

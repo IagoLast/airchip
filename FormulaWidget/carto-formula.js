@@ -1,10 +1,14 @@
-class CartoFormula extends HTMLElement {
+class CartoFormula extends CartoElement {
     static get observedAttributes() {
         return ['title', 'subtitle', 'value', 'footer'];
     }
 
-    get template() {
-        return `
+    set value(newValue) {
+        this.setAttribute('value', newValue);
+    }
+
+    render() {
+        return this._render`
             <div class="carto-formula">
                 <span class="title">${this.state.title || ''}</span>
                 <span class="subtitle">${this.state.subtitle || ''}</span>
@@ -12,37 +16,6 @@ class CartoFormula extends HTMLElement {
                 <span class="footer">${this.state.footer || ''}</span>
             </div>
         `;
-    }
-
-    set value(newValue) {
-        this.setAttribute('value', newValue);
-    }
-
-    constructor() {
-        super();
-        console.info('constructor', this);
-        this.state = Object.freeze({});
-    }
-
-    connectedCallback() {
-        console.info('connectedCallback', this);
-        this.render();
-    }
-
-    attributeChangedCallback(attributeName, oldValue, newValue, namespace) {
-        console.info('attributeChangedCallback', this);
-        const newState = Object.assign({}, this.state);
-        newState[attributeName] = newValue;
-        this.setState(newState);
-    }
-
-    setState(state) {
-        this.state = state;
-        this.render();
-    }
-
-    render() {
-        this.innerHTML = this.template;
     }
 }
 

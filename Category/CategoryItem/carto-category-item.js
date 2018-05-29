@@ -1,12 +1,6 @@
-class CartoCategoryItem extends HTMLElement {
+class CartoCategoryItem extends CartoElement {
     static get observedAttributes() {
         return ['value', 'selected', 'name', 'percent'];
-    }
-
-    constructor() {
-        super();
-        this.state = Object.freeze({});
-        this._render = hyperHTML.bind(this);
     }
 
     render() {
@@ -20,20 +14,6 @@ class CartoCategoryItem extends HTMLElement {
             </div>
         `;
     }
-
-    connectedCallback() {
-        this.render();
-    }
-
-    attributeChangedCallback(attributeName, oldValue, newValue, namespace) {
-        this.setState({ [attributeName]: newValue });
-    }
-
-    setState(state) {
-        this.state = { ...this.state, ...state};
-        this.render();
-    }
-
 }
 
 customElements.define('carto-category-item', CartoCategoryItem);
