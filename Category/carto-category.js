@@ -17,19 +17,8 @@ class CartoCategory extends CartoElement {
     this.render();
   }
 
-  childClicked(event) {
-    const newSelected = this.parentElement.state.selected.includes(this.state.name)
-      ? this.parentElement.state.selected.filter(name => name !== this.state.name)
-      : [...this.parentElement.state.selected, this.state.name]
-
-    this.parentElement.setState({
-      ...this.parentElement.state,
-      selected: newSelected,
-    });
-  }
-
   _renderItem(item) {
-    return hyperHTML.wire()`
+    return hyperHTML.wire() `
       <carto-category-item
         value=${item.value}
         name=${item.name}
@@ -61,7 +50,23 @@ class CartoCategory extends CartoElement {
         <div class="CA-Title">${this.state.title}</div>
         <div class="CA-Subtitle">${this.state.subtitle}</div>
         ${items.map(item => this._renderItem(item))}
+        ${this.state.selected.length ? hyperHTML.wire()`<button onclick=${this.clearFilters.bind(this)} class="btn-clear"> CLEAR </button>` : ''}
       `;
+  }
+
+  childClicked(event) {
+    const newSelected = this.parentElement.state.selected.includes(this.state.name)
+      ? this.parentElement.state.selected.filter(name => name !== this.state.name)
+      : [...this.parentElement.state.selected, this.state.name]
+
+    this.parentElement.setState({
+      ...this.parentElement.state,
+      selected: newSelected,
+    });
+  }
+
+  clearFilters() {
+    this.setState({ selected: [] });
   }
 }
 

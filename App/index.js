@@ -27,7 +27,8 @@ const layer = new carto.layer.Layer(source, style);
 const categoryDataview1 = ravel.bind(carto, map, widgetElement0, source, 'adm0name', {
     limit: 10,
     operation: carto.operation.COUNT,
-    operationColumn: 'cartodb_id'
+    operationColumn: 'cartodb_id',
+    sync: false,
 });
 client.addDataview(categoryDataview1);
 
@@ -35,14 +36,11 @@ client.addDataview(categoryDataview1);
 const categoryDataview2 = ravel.bind(carto, map, widgetElement1, source, 'name', {
     limit: 10,
     operation: carto.operation.COUNT,
-    operationColumn: 'adm0name'
+    operationColumn: 'adm0name',
+    sync: false,
 });
 client.addDataview(categoryDataview2);
 
 
 client.addLayer(layer);
 client.getLeafletLayer().addTo(map);
-
-document.querySelector('button').addEventListener('click', () => {
-    source.setQuery(originalQuery);
-})

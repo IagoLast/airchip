@@ -30,10 +30,11 @@
             top: 0;
             right: 0;
             z-index: 999;
+            display: flex;
+            flex-direction: column;
         }
 
         carto-category {
-            position: relative;
             display: inline-block;
         }
     </style>
@@ -44,7 +45,6 @@
     <aside>
         <carto-category id="widget-0" title="widget-0" subtitle="asdasd"></carto-category>
         <carto-category id="widget-1" title="widget-1" subtitle="asdasd"></carto-category>
-        <button class="carto-button large">Clear filter</button>
     </aside>
     <script src="./dist/bundle.js"></script>
 </body>
