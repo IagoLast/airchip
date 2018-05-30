@@ -1,4 +1,9 @@
 class CartoFormula extends CartoElement {
+    constructor() {
+      super();
+      this.className = 'Air-Formula';
+    }
+    
     static get observedAttributes() {
         return ['title', 'subtitle', 'value', 'footer'];
     }

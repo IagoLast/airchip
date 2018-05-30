@@ -1,8 +1,4 @@
 class CartoCategory extends CartoElement {
-  static get observedAttributes() {
-    return ['title', 'subtitle', 'data', 'ignore'];
-  }
-
   constructor() {
     super();
 
@@ -11,6 +7,10 @@ class CartoCategory extends CartoElement {
     this.state = Object.freeze({
       selected: [],
     });
+  }
+
+  static get observedAttributes() {
+    return ['title', 'subtitle', 'data', 'ignore'];
   }
 
   setData(newValue) {

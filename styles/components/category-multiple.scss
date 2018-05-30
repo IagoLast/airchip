@@ -1,3 +1,32 @@
 ///*------------------------------------*\
 //    Airship Category Multiple
 //\*------------------------------------*/
+
+.Air-CategoryMultiple {
+  padding: 16px;
+  background: white;
+  width: 280px;
+  display: block;
+  font-family: "Roboto", sans-serif;
+  border-bottom: 1px solid #ccc;
+}
+
+.Air-CategoryMultiple .Air-Button--area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Air-CategoryMultiple .Air-Button--area .Air-Button--clear {
+  align-items: center;
+  color: #1785fb;
+  background: none;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  font: 500 12px/20px "Roboto";
+  margin: 0;
+  padding: 12px 0;
+  transition: all 0.2s ease;
+  vertical-align: top;
+}

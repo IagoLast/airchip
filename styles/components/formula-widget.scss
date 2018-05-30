@@ -1,3 +1,31 @@
 ///*------------------------------------*\
 //    Airship Formula Widget
 //\*------------------------------------*/
+
+.Air-Formula {
+  display: inline-block;
+  background: white;
+  padding: 15px;
+  min-width: 200px;
+  font-family: "Roboto";
+  font-weight: 300;
+}
+
+.Air-Formula .Air-Formula--Container {
+  display: block;
+}
+
+.Air-Formula .Air-Formula--Subtitle {
+  font-size: 13px;
+  color: #888;
+}
+
+.Air-Formula .Air-Formula--Value {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 36px;
+}
+
+.Air-Formula .Air-Formula--Footer {
+  font-size: 13px;
+}

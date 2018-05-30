@@ -1,16 +1,13 @@
 //TODO: Include D3 as a node module
 
 class CartoDonut extends HTMLElement {
-    static get observedAttributes() {
-        return ['title', 'subtitle', 'footer', 'data'];
+    constructor() {
+      super();
+      this.className = 'Air-Donut';
     }
 
-    constructor() {
-        super();
-        console.info('constructor', this);
-        this.state = Object.freeze({});
-
-        this._render = hyperHTML.bind(this);
+    static get observedAttributes() {
+        return ['title', 'subtitle', 'footer', 'data'];
     }
 
     get _mutableContent() {
