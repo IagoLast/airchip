@@ -6,20 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Carto Button</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="carto-button.css">
+    <link rel="stylesheet" href="../../dist/airship.css">
     <script src="carto-button.js"></script>
 </head>
 
 <body>
-    <button class="carto-button small">Small Button</button>
-    <button class="carto-button">Button</button>
-    <button id="foo" class="carto-button large">Large Button</button>
+    <button class="Air-Button Air-Button--small">Small Button</button>
+    <button class="Air-Button">Button</button>
+    <button id="foo" class="Air-Button Air-Button--large">Large Button</button>
 </body>
 
 <script>
     // Only components with some behaviour will have this
-    CartoButton.attachTo(document.querySelectorAll('.carto-button'));
+    CartoButton.attachTo(document.querySelectorAll('.Air-Button'));
     document.querySelector('#foo').addEventListener('carto-click', event => {
         console.warn(event.detail);
     });

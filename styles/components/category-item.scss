@@ -1,0 +1,61 @@
+///*------------------------------------*\
+//    Airship Category Item
+//\*------------------------------------*/
+
+.Air-CategoryItem {
+  display: flex;
+  flex-wrap: wrap;
+  cursor: default;
+  margin-bottom: 8px;
+}
+
+.Air-CategoryItem--name {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+  overflow: hidden;
+  margin: 0px;
+  line-height: 20px;
+  font-weight: 400;
+  font-size: 12px;
+  font-family: Roboto, sans-serif;
+  flex: 1 1 70%;
+  color: rgb(44, 44, 44);
+  -webkit-font-smoothing: antialiased;
+}
+
+.Air-CategoryItem--value {
+  text-align: right;
+  margin: 0px;
+  line-height: 20px;
+  font-weight: 400;
+  font-size: 12px;
+  font-family: Roboto, sans-serif;
+  flex: 1 1 30%;
+  color: rgb(44, 44, 44);
+  -webkit-font-smoothing: antialiased;
+}
+
+.Air-CategoryItem--ProgressBar {
+  width: 100%;
+  position: relative;
+  height: 4px;
+  border-radius: 2px;
+  background: rgb(245, 245, 245);
+}
+
+.Air-CategoryItem--Progress {
+  width: 100%;
+  transition: background 0.2s ease;
+  position: absolute;
+  max-width: 100%;
+  left: 0px;
+  height: 4px;
+  content: "";
+  border-radius: 2px;
+  background-color: transparent;
+}
+
+.Air-CategoryItem--Progress.active {
+  background-color: #47db99;
+}

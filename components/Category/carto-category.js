@@ -6,6 +6,8 @@ class CartoCategory extends CartoElement {
   constructor() {
     super();
 
+    this.className = 'Air-Category';
+
     this.state = Object.freeze({
       selected: [],
     });
@@ -46,7 +48,7 @@ class CartoCategory extends CartoElement {
       .filter(item => this.state.ignore !== item.name);
 
     return this._render`
-        <div class="CA-Title">${this.state.title}</div>
+        <div class="Air-Category-Title">${this.state.title}</div>
         <div class="CA-Subtitle">${this.state.subtitle}</div>
         ${items.map(item => this._renderItem(item))}
         ${this.state.selected.length ? hyperHTML.wire() `<button onclick=${this.clearFilters.bind(this)} class="btn-clear"> CLEAR </button>` : ''}

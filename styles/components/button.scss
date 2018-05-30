@@ -1,0 +1,108 @@
+///*------------------------------------*\
+//    Airship Button
+//\*------------------------------------*/
+
+$padding-base: 4px;
+$size-base: 4px;
+$border-radius: 4px;
+
+.Air-Button {
+  align-items: center;
+  background: $air-color-brand01;
+  border-radius: $border-radius;
+  border: 0;
+  color: $air-color-white;
+  cursor: pointer;
+  display: flex;
+  font: $air-font-body-regular;
+  padding: $padding-base $padding-base * 2;
+
+  &:hover {
+    background: darken($air-color-brand01, 16%);
+  }
+
+  &:focus {
+    background: darken($air-color-brand01, 24%);
+  }
+  &.is-disabled:hover,
+  &.is-disabled:focus {
+    background: $air-color-brand01;
+    color: $air-color-white;
+  }
+}
+
+.Air-Button--media {
+  fill: $air-color-white;
+  height: 12px;
+  margin-right: 8px;
+  width: 12px;
+}
+
+.Air-Button--large {
+  font: $air-font-subheader-regular;
+  padding: 8px 16px;
+
+  .Air-Button--media {
+    height: 16px;
+    margin-right: 12px;
+    width: 16px;
+  }
+
+  &.Air-Button--icon {
+    padding: 10px;
+  }
+}
+
+.Air-Button--small {
+  font: $air-font-caption-regular;
+  padding: 6px 8px;
+}
+
+.Air-Button--secondary {
+  background: transparent;
+  border: 1px solid $air-color-brand01;
+  color: $air-color-brand01;
+
+  &:hover {
+    background: lighten($air-color-brand01, 45%);
+  }
+  &:focus {
+    background: lighten($air-color-brand01, 40%);
+  }
+
+  &.is-disabled:hover,
+  &.is-disabled:focus {
+    background: transparent;
+    color: $air-color-brand01;
+  }
+  .button-media {
+    fill: $air-color-brand01;
+  }
+}
+
+.Air-Button--base {
+  background: transparent;
+  color: $air-color-brand01;
+
+  .Air-Button--media {
+    fill: $air-color-brand01;
+  }
+
+  &:hover {
+    background: lighten($air-color-brand01, 45%);
+  }
+  &:focus {
+    background: lighten($air-color-brand01, 40%);
+  }
+
+  &.is-disabled:hover,
+  &.is-disabled:focus {
+    background: transparent;
+    color: $air-color-brand01;
+  }
+}
+
+.is-disabled {
+  cursor: default;
+  opacity: 0.24;
+}

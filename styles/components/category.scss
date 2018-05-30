@@ -1,0 +1,45 @@
+///*------------------------------------*\
+//    Airship Category
+//\*------------------------------------*/
+
+.Air-Category {
+  padding: 16px;
+  background: white;
+  width: 280px;
+  display: block;
+  font-family: 'Roboto', sans-serif;
+}
+
+.Air-Category .Air-Button--clear {
+  align-items: center;
+  color: #1785FB;
+  background: none;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  font: 500 12px/20px 'Roboto';
+  margin: 0;
+  padding: 12px 0;
+  transition: all 0.2s ease;
+  vertical-align: top;
+}
+
+.Air-Category--Title {
+  margin: 0px;
+  line-height: 24px;
+  font-weight: 400;
+  font-size: 16px;
+  font-family: Roboto, sans-serif;
+  color: rgb(44, 44, 44);
+  -webkit-font-smoothing: antialiased;
+}
+
+.Air-Category--Subtitle {
+  margin: 0px 0px 12px;
+  line-height: 16px;
+  font-weight: 400;
+  font-size: 12px;
+  font-family: Roboto, sans-serif;
+  color: rgb(116, 116, 116);
+  -webkit-font-smoothing: antialiased;
+}

@@ -10,7 +10,7 @@ class CartoElement extends HTMLElement {
   }
 
   attributeChangedCallback(attributeName, oldValue, newValue, namespace) {
-    this.setState({ [attributeName]: newValue });
+    this.setState({ [ attributeName ]: newValue });
   }
 
   setState(state) {

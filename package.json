@@ -1,0 +1,30 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "Demo app using widgets and components",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack-cli --mode=development",
+    "build:watch": "webpack-cli --mode=development -w"
+  },
+  "dependencies": {
+    "@airship/category-multiple-widget": "file:./components/CategoryMultiple",
+    "@airship/category-widget": "file:./components/Category",
+    "@airship/category-widget-item": "file:./components/Category/CategoryItem",
+    "@airship/donut-widget": "file:./components/Donut",
+    "@airship/formula-widget": "file:./components/FormulaWidget",
+    "@carto/carto.js": "^4.0.6",
+    "@carto/ravel": "file:./vendor/ravel",
+    "css-loader": "^0.28.11",
+    "leaflet": "^1.3.1",
+    "sass-loader": "^7.0.1",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.8.3"
+  },
+  "devDependencies": {
+    "mini-css-extract-plugin": "^0.4.0",
+    "node-sass": "^4.9.0",
+    "webpack-cli": "^2.0.14"
+  }
+}

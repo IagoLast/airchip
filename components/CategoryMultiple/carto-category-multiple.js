@@ -5,6 +5,9 @@ class CartoCategoryMultiple extends CartoElement {
 
   constructor() {
     super();
+
+    this.className = 'Air-CategoryMultiple';
+
     this.state = Object.freeze({
       selected: [],
     });
@@ -63,7 +66,7 @@ class CartoCategoryMultiple extends CartoElement {
   }
 
   childClicked(event) {
-    // parentElement refers to CategoryElement 
+    // parentElement refers to CategoryElement
     const newSelected = this.parentElement.state.selected.includes(this.state.name)
       ? this.parentElement.state.selected.filter(name => name !== this.state.name)
       : [...this.parentElement.state.selected, this.state.name]
